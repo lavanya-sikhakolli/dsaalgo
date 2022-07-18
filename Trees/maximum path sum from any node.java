@@ -9,12 +9,12 @@ class Res{
        int l=func(root.left,res);
       // System.out.print(" maximum value...."+res.maxval+" ");
        int r=func(root.right,res);
-       res.maxval=Math.max(res.maxval,Math.max(l+root.data+r,Math.max(l+root.data,r+root.data)));
+       res.maxval=Math.max(res.maxval,Math.max(l+root.data+r,Math.max(l+root.data,r+root.data)));//maxval is the max. path sum which we need to return
      //  System.out.print("maxiimum value is"+res.maxval+"   ");
       if(res.maxval<0){
         return Math.max(Math.max(l,r),root.data);}//if all the values are negative...we are returning max among those
        else{
-          if( (Math.max(l,r)+root.data)<0){
+          if( (Math.max(l,r)+root.data)<0){//here the returning values are l and r values of root
               return 0;}
           else{
               return Math.max(l,r)+root.data;
