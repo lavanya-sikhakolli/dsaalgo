@@ -1,0 +1,5 @@
+---->To maintain sorted stream of data(sorted set of data)
+------->To implement doubly ended priority queue
+--------->To solve problems like
+       a)count smaller/greater in a stream
+       b)floor/ceil/smaller/greater in a stream
