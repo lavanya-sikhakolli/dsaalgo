@@ -3,3 +3,40 @@
 --------->To solve problems like
        a)count smaller/greater in a stream
        b)floor/ceil/smaller/greater in a stream
+------
+------------
+---------------------
+-------------------------------
+Methods in treeset in java
+add
+remove
+contains
+it wont allow duplicates
+we can create iterator
+we can use for each loop
+lower....returns the largest smaller
+higher--->return the smallest higher
+ceil--->
+floor---->
+------------------
+----------------------------
+--------------------------------------
+Methods in treemap in java
+put
+containsKey
+getkey
+getvalue
+entryset
+remove--->remove the key value pair for the specified key
+size
+higherkey
+lowerkey
+ceilingkey
+floorkey
+higherentry
+floorentry
+ceilingentrry
+lowerentry
+-------------------
+--------------------------
+-------------------------------------
