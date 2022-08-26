@@ -38,10 +38,10 @@ public class Solution {
             else{
                 arr[k]=R[j];
                 j++;
-                k++;
-                count+=n1-i;
-            }
-        }
+                k++;        //  firsthalf       secondhalf
+                count+=n1-i;//[1,3,5]  ....   [2,4,6]......so whenever the ith element in the left part is greater than the jth element of second half....then the possible
+            }                                     //  inversions are (number of elements in first half -current index)---->which is (n1-i);
+        }                        
         while(i<n1){
             arr[k]=L[i];
             i++;
