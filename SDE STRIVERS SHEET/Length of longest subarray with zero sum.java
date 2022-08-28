@@ -27,3 +27,9 @@ public class Solution {
         return max;
 	}
 }
+
+//the approach here we are following is we are storing the prefix sum of each element
+//6 -2 2 -8  1  7  4  -10...array
+//6  4  6 -2 -1 6 10   0....prefix sum
+//so...whenever the prefix sum is same for the elemets ...that means the in between adding elemets sum is 0,update the max accordingly.
+//if sum is 0..then update max as i+1
