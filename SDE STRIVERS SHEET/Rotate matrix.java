@@ -1,4 +1,6 @@
- public void rotate(int[][] matrix) {
+//By observing ...we can get the rotation by transposing the matrix and then reversing each row
+
+public void rotate(int[][] matrix) {
         int rows=matrix.length,cols=matrix[0].length;
         for(int i=0;i<rows;i++){
             for(int j=i;j<cols;j++){
