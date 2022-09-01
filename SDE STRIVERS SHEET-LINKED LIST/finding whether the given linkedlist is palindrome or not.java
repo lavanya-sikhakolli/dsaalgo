@@ -34,3 +34,6 @@ class Solution {
         return true;
     }
 }
+
+//TC:O(N/2)+O(N/2)+O(N/2)---->one is for finding the mid ...one is for reversing the half...one is for palindrome check
+//SC:O(1)
