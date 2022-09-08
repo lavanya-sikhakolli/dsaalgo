@@ -12,6 +12,7 @@
 class itemComparator implements Comparator<Item>{
 
     @Override
+    // to get the max value,here we are sorting based on the ratio of value/weight
     public int compare(Item a,Item b){
         double r1=(double)a.value/(double)a.weight;
         double r2=(double)b.value/(double)b.weight;
