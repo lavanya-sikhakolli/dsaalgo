@@ -6,7 +6,9 @@ class MyStack {
         q2=new LinkedList<Integer>();
         
     }
-    
+    //By considering push() as costly....therefore whenever we call pop() then we will get element which is added lately...which exhibits the stack operation.
+   //if we want to add 20 to the queue....q1={10,5,15},q2={}......we will add all the elements from q1 to q2 and add the new element in q1....q1={20},q2={10,5,15}
+   //Now add all the elements into q1 from q2.
     public void push(int x) {
         while(q1.isEmpty()==false){
             q2.add(q1.remove());
