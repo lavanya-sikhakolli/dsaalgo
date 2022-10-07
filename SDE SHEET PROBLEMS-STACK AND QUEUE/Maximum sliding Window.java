@@ -17,6 +17,7 @@ class Solution {
             }
             q.offer(i);
             if(i>=k-1){
+                //we are making sure that always the peek element is the max element of window
                 res[ri++]=nums[q.peek()];
             }
         }
