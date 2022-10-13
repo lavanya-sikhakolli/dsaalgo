@@ -66,3 +66,45 @@ class Solution
         return res;
     }
 }
+
+//BOTTOM VIEW OF A BINARY TREE
+class Pair{
+    Node node;
+    int hd;
+    Pair(Node n,int h){
+        node =n;
+        hd=h;
+    }
+}
+
+class Solution
+{
+    //Function to return a list containing the bottom view of the given tree.
+    public ArrayList <Integer> bottomView(Node root)
+    {
+        // Code here
+        ArrayList<Integer> res=new ArrayList<>();
+        Map <Integer,Integer> mp=new TreeMap<>();
+        if(root==null){
+            return res;
+        }
+        Queue<Pair> q=new LinkedList<Pair>();
+        q.add(new Pair(root,0));
+        while(q.isEmpty()==false){
+            Pair t=q.poll();
+            Node curr=t.node;
+            int x=t.hd;
+            mp.put(x,curr.data);
+            if(curr.left!=null){
+                q.add(new Pair(curr.left,x-1));
+            }
+            if(curr.right!=null){
+                q.add(new Pair(curr.right,x+1));
+            }
+            }
+             for (Map.Entry<Integer,Integer> entry : mp.entrySet()) {
+            res.add(entry.getValue()); 
+        }
+        return res;
+    }
+}
