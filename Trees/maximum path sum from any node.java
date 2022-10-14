@@ -34,6 +34,7 @@ class Res{
 // here why we are creating result class ...because ...we have to update res value in every call...to make it possible...we are doing that.!!!
 //if any of the sum is negative.....we are not considering that subtree value......thats why we are returning zero.!!!!
 
+
 //SOLUTION 2
 class Solution {
 public:
@@ -67,3 +68,26 @@ public:
     }
 };
 
+//Java Solution for c++
+class Res{
+    int result=Integer.MIN_VALUE;
+    }
+class Solution {
+    
+    public int maxPath(TreeNode root,Res res){
+        if(root==null){
+            return 0;
+        }
+        int lmax=maxPath(root.left,res);
+        int rmax=maxPath(root.right,res);
+        if(lmax<0){ lmax=0;}
+        if(rmax<0){ rmax=0;}
+        res.result=Math.max(res.result,root.val+lmax+rmax);
+        return root.val+Math.max(lmax,rmax);
+    }
+    public int maxPathSum(TreeNode root) {
+        Res res=new Res();
+        maxPath(root,res);
+        return res.result;
+    }
+}
