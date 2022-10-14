@@ -31,5 +31,39 @@ class Res{
        return res.maxval;
     }
 }
-// here why we are creating result class ...because ...we can update res value in every call...to make it possible...we are doing that.!!!
+// here why we are creating result class ...because ...we have to update res value in every call...to make it possible...we are doing that.!!!
 //if any of the sum is negative.....we are not considering that subtree value......thats why we are returning zero.!!!!
+
+//SOLUTION 2
+class Solution {
+public:
+    
+    //time  : O(n)
+    //space : O(n)
+    
+    int maxPathSum(TreeNode* root) {
+        
+        int res = -10001;
+        int k = sum(root, res);     //k is of no significance here
+        return res;
+    }
+    
+    int sum(TreeNode* root, int &res){
+        if(!root) return 0;                     //if we hit null return 0
+        
+        int lmax = sum(root->left, res);        //lmax stores max val of subtree connected to root in left side
+        int rmax = sum(root->right, res);       //Rmax stores max val of subtree connected to root in right side
+        
+        //if any of both is -ve make them 0 as our objective is to maximize the sum
+        if(lmax < 0) lmax = 0;
+        if(rmax < 0) rmax = 0;
+        
+        res = max(res, root->val+lmax+rmax);    //in the process update res for each node
+        
+        return root->val+max(lmax,rmax);        //return which side gives maximum sum
+        //note here return is of no significance for the qn, we apply some method and in between we collect our ans
+        //for ex, in diameter qn we find height and collect diameter lly here we apply sum method and 
+        //in between we update our required answer to maximum
+    }
+};
+
