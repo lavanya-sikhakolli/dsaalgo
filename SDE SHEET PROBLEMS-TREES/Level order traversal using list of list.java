@@ -118,3 +118,65 @@ class Solution {
         return res;   // (2,[(-2,{4}),(0,{5,6}),(2,{7})])
     }
 }
+//BOUNDARY TRAVERSAL OF A BINARY TREE
+class Solution
+{
+     ArrayList<Integer> res=new ArrayList<>();
+     boolean isLeaf(Node root){
+        if(root.left==null && root.right==null){
+            return true;
+        }
+        return false;
+    }
+      void addingLeft(Node root){
+        Node curr=root.left;
+        while(curr!=null){
+            //adding only when it is not leaf node
+            if(isLeaf(curr)==false){
+                res.add(curr.data);
+            }
+            //if there is no left node...then the right node itself is the boundary node
+            if(curr.left!=null){ curr=curr.left;}
+            else { curr=curr.right;}
+        }
+    }
+    void addingLeaves(Node root){
+        //adding the leaf nodes
+       if(isLeaf(root)==true){
+           res.add(root.data);
+           return;
+       }
+       //traversing until we reach the leaf nodes 
+        if(root.left!=null){addingLeaves(root.left);}
+        if(root.right!=null){
+            addingLeaves(root.right);
+        }
+    }
+    void addingRight(Node root){
+        ArrayList<Integer> temp=new ArrayList<>();
+        Node curr=root.right;
+        while(curr!=null){
+            if(isLeaf(curr)==false){temp.add(curr.data);}
+            //if there is no right node...then left node will be the boundary
+            if(curr.right!=null){curr=curr.right;}
+            else{ curr=curr.left;}
+        }
+        for(int i=temp.size()-1;i>=0;i--){
+            res.add(temp.get(i));
+        }
+    }
+	ArrayList <Integer> boundary(Node node)
+	{
+	      if(node ==null){
+            return res;
+        }
+        //if we wont check this condition then if the root is itself is the leaf....so the 
+        //the data will be added twice which is by aading in the leaves method.
+        if(isLeaf(node)==false){res.add(node.data);}
+        addingLeft(node);
+        addingLeaves(node);
+        addingRight(node);
+        return res;
+	
+	}
+}
