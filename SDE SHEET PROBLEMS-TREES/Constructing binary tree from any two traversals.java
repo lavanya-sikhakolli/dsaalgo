@@ -31,6 +31,8 @@ class Solution {
 }
 
 //cONSTRUCTING BINARY TREE FROM INORDER AND POSTORDER TRAVERSALS
+//since postorder traversal is....left root right....we are traversing from the end...therefore we will get root and then we will get right and then left.
+//Since we are updating postIndex in every call ...we are defining it as a class variable
 class Temp{
     int t=0;
 }
