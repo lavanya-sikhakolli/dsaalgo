@@ -29,3 +29,42 @@ class Solution {
         return res;
     }
 }
+
+//cONSTRUCTING BINARY TREE FROM INORDER AND POSTORDER TRAVERSALS
+class Temp{
+    int t=0;
+}
+class Solution {
+    int postIndex=0;
+    
+    public TreeNode cT(int[] in,int[] post,int is,int ie,Temp postIndex){
+        if(is>ie){ return null;}
+        
+        TreeNode root=new TreeNode(post[postIndex.t--]);
+        int inIndex=0;
+        for(int i=is;i<=ie;i++){
+            if(in[i]==root.val){
+                inIndex=i;
+                break;
+            }
+        }
+        root.right=cT(in,post,inIndex+1,ie,postIndex);
+        root.left=cT(in,post,is,inIndex-1,postIndex);
+        return root;
+    }
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+        int n=inorder.length;
+        if(n==0){
+            return null;
+        }
+        if(n==1){
+            TreeNode root=new TreeNode(inorder[0]);
+            return root;
+        }
+         Temp temp=new Temp();
+        temp.t=n-1;
+        
+        TreeNode res=cT(inorder,postorder,0,n-1,temp);
+        return res;
+    }
+}
