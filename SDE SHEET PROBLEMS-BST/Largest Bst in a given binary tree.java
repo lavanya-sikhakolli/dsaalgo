@@ -58,3 +58,47 @@ class Solution{
     }
     
 }
+//Largest bst sum in a given binary tree
+class NodeValue{
+    int max_val,min_val,sum;
+    boolean isBst;
+    NodeValue(boolean isBst,int min_val,int max_val,int sum){
+        this.isBst=isBst;
+        this.min_val=min_val;
+        this.max_val=max_val;
+        this.sum=sum;
+        }
+}
+class Res{
+    int res=0;
+    Res(){
+         }
+}
+class Solution {
+    public NodeValue func(TreeNode root,Res obj){
+        if(root==null){
+            return new NodeValue(true,Integer.MAX_VALUE,Integer.MIN_VALUE,0);
+        }
+        NodeValue left=func(root.left,obj);
+        NodeValue right=func(root.right,obj);
+        NodeValue curr=new NodeValue(false,Integer.MAX_VALUE,Integer.MIN_VALUE,0);
+        if(left.max_val<root.val &&right.min_val>root.val && left.isBst==true && right.isBst==true){
+            curr.isBst=true;
+        }
+        else{
+            curr.isBst=false;
+        }
+        curr.max_val=Math.max(Math.max(left.max_val,right.max_val),root.val);
+        curr.min_val=Math.min(Math.min(left.min_val,right.min_val),root.val);
+        curr.sum=left.sum+right.sum+root.val;
+        if(curr.isBst==true){
+            obj.res=Math.max(curr.sum,obj.res);
+        }
+        return curr;
+    }
+    public int maxSumBST(TreeNode root) {
+        Res result=new Res();
+        func(root,result);
+        return result.res;
+    }
+}
