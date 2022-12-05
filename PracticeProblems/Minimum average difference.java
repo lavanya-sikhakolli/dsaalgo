@@ -4,7 +4,7 @@ class Solution {
         if(n==1){
             return 0;
         }
-     int sum=0,leftSum=0,rightSum=0;
+     long sum=0,leftSum=0,rightSum=0;
      for(int i=0;i<n;i++){
          sum+=nums[i];
      }
